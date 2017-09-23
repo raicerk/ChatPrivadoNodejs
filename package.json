@@ -16,5 +16,9 @@
   ],
   "author": "Juan Mora",
   "license": "ISC",
-  "homepage": "https://bitbucket.org/glgroupCL/chat#readme"
+  "homepage": "https://bitbucket.org/glgroupCL/chat#readme",
+  "dependencies": {
+    "express": "^4.15.4",
+    "socket.io": "^2.0.3"
+  }
 }
