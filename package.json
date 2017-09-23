@@ -1,0 +1,20 @@
+{
+  "name": "chatintranet",
+  "version": "1.0.0",
+  "description": "Chat para intranet corporativa de la compañia",
+  "main": "main.js",
+  "scripts": {
+    "test": "node main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://bitbucket.org/glgroupCL/chat.git"
+  },
+  "keywords": [
+    "nodejs",
+    "socket.io"
+  ],
+  "author": "Juan Mora",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/glgroupCL/chat#readme"
+}
