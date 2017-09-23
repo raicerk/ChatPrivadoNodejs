@@ -9,10 +9,14 @@ io.sockets.on('connection', function (socket) {
 
     people[socket.handshake.query.name] = socket.id;
 
-    console.log(people);
+    io.emit('lista',people);
 
     socket.on('send', function (destinatario, msg) {
         io.to(people[destinatario]).emit('message', msg);
     });
+
+    console.log('--------------------------------');
+    console.log(people);
+    console.log('--------------------------------');
 
 });
