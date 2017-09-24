@@ -1,21 +1,27 @@
 let config = require('./config');
 const sql = require('mssql');
 
+var connection = sql.connect(config.cadena, function (err) {
+    if (err) {
+        throw err;
+    }
+});
+
 exports.query = function (Emisor, Receptor, Mensaje) {
 
-    sql.connect(config.cadena, err => {
-        
-        new sql.Request()
-            .input('UsuarioEmisor', sql.VarChar(100), Emisor)
-            .input('UsuarioReceptor', sql.VarChar(100), Receptor)
-            .input('Mensaje', sql.Text, Mensaje)
-            .execute('spIns_Intranet_RegistraChat', (err, result) => {
-                console.dir(result);
-                sql.close();
-            })
-    });
+    new sql.Request()
+        .input('UsuarioEmisor', sql.VarChar(100), Emisor)
+        .input('UsuarioReceptor', sql.VarChar(100), Receptor)
+        .input('Mensaje', sql.Text, Mensaje)
+        .execute('spIns_Intranet_RegistraChat', (err, result) => {
+            console.log(result);
+            if(err){
+                console.log('error en la ejecución:' + err);
+            }
+        });
 
     sql.on('error', err => {
         console.log('error:' + err);
-    });    
+    });
+
 };
