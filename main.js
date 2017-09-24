@@ -1,8 +1,9 @@
 let express = require('express');
 let app = express();
 let db = require('./db');
+let config = require('./config');
 
-let io = require('socket.io').listen(app.listen(8080, function () {
+let io = require('socket.io').listen(app.listen(config.puerto, function () {
     console.log('chat ejecutandose');
 }));
 
