@@ -19,6 +19,7 @@
   "homepage": "https://bitbucket.org/glgroupCL/chat#readme",
   "dependencies": {
     "express": "^4.15.4",
+    "mssql": "^4.0.4",
     "socket.io": "^2.0.3"
   }
 }
