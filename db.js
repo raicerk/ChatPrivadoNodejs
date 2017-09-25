@@ -13,7 +13,7 @@ exports.query = function (Emisor, Receptor, Mensaje) {
         .input('UsuarioEmisor', sql.VarChar(100), Emisor)
         .input('UsuarioReceptor', sql.VarChar(100), Receptor)
         .input('Mensaje', sql.Text, Mensaje)
-        .execute('spIns_Intranet_RegistraChat', (err, result) => {
+        .execute('ProcedimientoParaAlmacenarChat', (err, result) => {
             console.log(result);
             if(err){
                 console.log('error en la ejecución:' + err);
