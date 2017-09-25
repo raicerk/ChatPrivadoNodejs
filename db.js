@@ -14,9 +14,11 @@ exports.query = function (Emisor, Receptor, Mensaje) {
         .input('UsuarioReceptor', sql.VarChar(100), Receptor)
         .input('Mensaje', sql.Text, Mensaje)
         .execute('ProcedimientoParaAlmacenarChat', (err, result) => {
-            console.log(result);
+            
             if(err){
                 console.log('error en la ejecución:' + err);
+            }else{
+                console.log(result);
             }
         });
 

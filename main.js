@@ -3,8 +3,11 @@ let app = express();
 let db = require('./db');
 let config = require('./config');
 
+app.use(express.static('html'));
+
 let io = require('socket.io').listen(app.listen(config.puerto, function () {
     console.log('chat ejecutandose');
+    console.log('html estatico ejecutandose');
 }));
 
 var people = {};
@@ -35,3 +38,4 @@ io.sockets.on('connection', function (socket) {
     console.log('--------------------------------');
 
 });
+

@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+        <title>
+            Chat
+        </title>
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.js"></script>
+    </head>
+    <body>
+        <section>
+            <article>
+                <ul id="lista">
+                </ul>
+            </article>
+            <article>
+                Mensaje:
+                <input id="mensaje" type="text"/>
+                <br/>
+                Destinatario:
+                <input id="destinatario" type="text"/>
+                <button id="enviar" type="button">
+                    Enviar
+                </button>
+            </article>
+            <article>
+                <header>
+                    <h2>
+                        Historial del chat
+                    </h2>
+                </header>
+                <p id="respuesta">
+                </p>
+            </article>
+        </section>
+        <script>
+            $(document).ready(function () {
+
+                let searchParams = new URLSearchParams(window.location.search); 
+
+                var socket = io.connect('http://localhost:8080', { query: 'name='+searchParams.get('usuario') });
+
+                socket.on('message', function (data) {
+                    $("#respuesta").append(moment().format('DD-MM-YYYY hh:mm:ss') + ' : ' + data + '<br>');
+                });
+
+                socket.on('lista', function (data) {
+                    var lista = "";
+                    $.each(data, function (key, value) {
+                        lista += "<li>"+key+"</li>";
+                    });
+                    $("#lista").html(lista);
+                });
+
+                $("#enviar").click(function() {
+                    socket.emit('send', $("#destinatario").val(), $("#mensaje").val());
+                    $("#respuesta").append(moment().format('DD-MM-YYYY hh:mm:ss') + ' : ' + $("#mensaje").val() + '<br>');
+                });
+
+            });
+        </script>
+    </body>
+</html>
