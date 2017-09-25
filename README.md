@@ -3,7 +3,8 @@
 Aplicación con nodejs para un chat privado de persona a persona con conexión a sql server
 
 
-##Configuración
+## Configuración
+
 
 * Para que la aplicacion funcione correctamente deben tener sql server 2008 instalado o superior (Incluye la version express gratuita de Microsoft)
 
@@ -53,7 +54,7 @@ npm install
 node main.js
 ```
 
-##Probando la aplicación
+## Probando la aplicación
 
 Se debe ingresar al sitio web
 
